@@ -2,7 +2,6 @@
 import BaseLayout from './base.astro'
 import { getEntry } from 'astro:content'
 import { getImage } from 'astro:assets'
-import { ViewTransitions } from 'astro:transitions';
 import { SEO } from 'astro-seo'
 
 import '@fontsource-variable/plus-jakarta-sans'
@@ -65,7 +64,6 @@ const profile = await getImage({
       }}
     />
     <Icons />
-    <ViewTransitions />
     <slot name="head" />
   </Fragment>
 
