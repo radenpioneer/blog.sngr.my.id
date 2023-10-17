@@ -1,6 +1,7 @@
 [dev]
   framework = "astro"
   autoLaunch = false
+  targetPort = 4321
 
 [[headers]]
   for = "/manifest.webmanifest"

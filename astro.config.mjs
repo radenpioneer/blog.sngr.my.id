@@ -4,10 +4,10 @@ import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import markdoc from '@astrojs/markdoc'
 import netlify from '@astrojs/netlify/functions'
-import AstroPWA from '@vite-pwa/astro'
+// import AstroPWA from '@vite-pwa/astro'
 
 import { readFileSync } from 'node:fs'
-import manifest from './src/includes/manifest.json' assert { type: 'json' }
+// import manifest from './src/includes/manifest.json' assert { type: 'json' }
 
 // vite plugin to import fonts
 const rawFonts = (ext) => ({
@@ -32,18 +32,15 @@ export default defineConfig({
     react(),
     sitemap(),
     markdoc(),
-    AstroPWA({
-      strategies: 'injectManifest',
-      srcDir: 'src/includes',
-      filename: 'sw.ts',
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
-      manifest,
-    }),
+    // AstroPWA({
+    //   strategies: 'injectManifest',
+    //   srcDir: 'src/includes',
+    //   filename: 'sw.ts',
+    //   registerType: 'autoUpdate',
+    //   includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+    //   manifest,
+    // }),
   ],
-  experimental: {
-    assets: true,
-  },
   redirects: {
     '/esai': '/tags/esai',
   },

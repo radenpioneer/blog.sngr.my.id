@@ -1,12 +1,7 @@
 ---
-import List from '~/layouts/list.astro'
-import { getCollection } from 'astro:content'
-
-const posts = await getCollection(
-  'blog',
-  ({ data }) =>
-    !data.tags?.some((t) => t.slug === 'catatan-mingguan') && !data.draft
-)
+import Layout from '~/layout/layout.astro'
 ---
 
-<List posts={posts} />
+<Layout>
+  <h1>iPhone 6</h1>
+</Layout>
