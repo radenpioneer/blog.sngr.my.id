@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config'
-import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import markdoc from '@astrojs/markdoc'
@@ -28,7 +27,6 @@ export default defineConfig({
   site: process.env.CI ? 'https://radenpioneer.blog' : 'http://localhost:3000',
   compressHTML: process.env.CI ? true : false,
   integrations: [
-    mdx(),
     react(),
     sitemap(),
     markdoc(),
