@@ -3,7 +3,6 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import markdoc from '@astrojs/markdoc'
-import netlify from '@astrojs/netlify/functions'
 import AstroPWA from '@vite-pwa/astro'
 
 import { readFileSync } from 'node:fs'
@@ -47,8 +46,6 @@ export default defineConfig({
   redirects: {
     '/esai': '/tags/esai',
   },
-  output: 'hybrid',
-  adapter: netlify(),
   vite: {
     plugins: [rawFonts(['.woff'])],
     optimizeDeps: {
