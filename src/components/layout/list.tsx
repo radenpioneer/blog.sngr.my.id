@@ -9,7 +9,7 @@ const List: FC<{ posts: CollectionEntry<'blog'>[] }> = ({ posts }) => {
     <div className="flex flex-col gap-6 md:gap-8">
       {posts.map(({ body, data: post }, i) => (
         <div className="flex flex-col gap-2" key={i}>
-          <h3 className="font-extrabold text-xl md:text-3xl">
+          <h3 className="font-extrabold text-xl md:text-3xl text-[--on-primary-container] dark:text-[--on-primary-container-dark]">
             <a href="#">{post.title}</a>
           </h3>
           <p
@@ -21,7 +21,7 @@ const List: FC<{ posts: CollectionEntry<'blog'>[] }> = ({ posts }) => {
               }),
             }}
           />
-          <div className="flex gap-1">
+          <div className="flex gap-1 overflow-x-auto">
             <PostBadge url="#">
               <time dateTime={getISODate(post.date)}>
                 {getLocaleDate(post.date)}
@@ -45,7 +45,10 @@ const PostBadge: FC<PropsWithChildren<{ url: string }>> = ({
   children,
 }) => {
   return (
-    <a className="text-sm" href={url}>
+    <a
+      className="text-sm bg-[--primary-container] text-[--on-primary-container] dark:bg-[--primary-container-dark] dark:text-[--on-primary-container-dark] rounded-full py-1 px-4"
+      href={url}
+    >
       {children}
     </a>
   )
