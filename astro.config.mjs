@@ -3,6 +3,7 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import markdoc from '@astrojs/markdoc'
+import vercel from '@astrojs/vercel/serverless'
 // import AstroPWA from '@vite-pwa/astro'
 
 import { readFileSync } from 'node:fs'
@@ -49,4 +50,6 @@ export default defineConfig({
       exclude: ['@resvg/resvg-js'],
     },
   },
+  output: 'hybrid',
+  adapter: vercel(),
 })
