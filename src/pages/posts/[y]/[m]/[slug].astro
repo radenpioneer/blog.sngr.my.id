@@ -1,0 +1,84 @@
+---
+import Layout from '~/layout/layout.astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
+import { parser } from '~/utils/marked'
+import { extractExcerpt } from '~/utils/excerpt'
+import { getISODate, getLocaleDate } from '~/utils/date'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('blog', ({ data: post }) => !post.draft)
+
+  return posts.map((post) => {
+    const date = new Date(post.data.date)
+    return {
+      params: {
+        y: date.getFullYear(),
+        m: (date.getMonth() + 1).toString().padStart(2, '0'),
+        slug: post.slug,
+      },
+      props: { post },
+    }
+  })
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description || extractExcerpt(post.body)}
+>
+  <section class="max-w-screen-lg mx-auto px-4 py-12">
+    <article class="prose dark:prose-invert md:prose-lg max-w-none mx-auto">
+      <hgroup class="not-prose flex flex-col gap-4 md:gap-6 mb-12">
+        <h1
+          class="font-black !leading-tight text-4xl md:text-6xl text-[--primary] dark:text-[--primary-dark]"
+        >
+          {post.data.title}
+        </h1>
+        <p
+          class="leading-relaxed text-xl md:text-2xl text-[--secondary] dark:text-[--secondary-dark]"
+          set:html={post.data.description ||
+            parser({
+              text: extractExcerpt(post.body) as string,
+              inline: true,
+            })}
+        />
+        <div
+          class="flex flex-col md:flex-row gap-4 text-sm text-[--secondary] dark:text-[--secondary-dark]"
+        >
+          <div>
+            <time datetime={getISODate(post.data.date)}
+              >{getLocaleDate(post.data.date)}</time
+            >
+          </div>
+        </div>
+        <hr />
+      </hgroup>
+      <Content />
+      {
+        post.data.tags && (
+          <Fragment>
+            <hr />
+            <div class="not-prose text-sm italic">
+              <span>{`Tag: `}</span>
+              <Fragment
+                set:html={post.data.tags
+                  .map(
+                    (tag) =>
+                      `<a href=/tags/${tag.slug}>${tag.name.toLowerCase()}</a>`
+                  )
+                  .join(', ')}
+              />
+            </div>
+          </Fragment>
+        )
+      }
+    </article>
+  </section>
+</Layout>

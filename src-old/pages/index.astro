@@ -1,0 +1,12 @@
+---
+import List from '~/layouts/list.astro'
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection(
+  'blog',
+  ({ data }) =>
+    !data.tags?.some((t) => t.slug === 'catatan-mingguan') && !data.draft
+)
+---
+
+<List posts={posts} />

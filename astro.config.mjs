@@ -1,12 +1,12 @@
 import { defineConfig } from 'astro/config'
-import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import markdoc from '@astrojs/markdoc'
-import AstroPWA from '@vite-pwa/astro'
+import vercel from '@astrojs/vercel/serverless'
+// import AstroPWA from '@vite-pwa/astro'
 
 import { readFileSync } from 'node:fs'
-import manifest from './src/includes/manifest.json' assert { type: 'json' }
+// import manifest from './src/includes/manifest.json' assert { type: 'json' }
 
 // vite plugin to import fonts
 const rawFonts = (ext) => ({
@@ -24,25 +24,21 @@ const rawFonts = (ext) => ({
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.NETLIFY ? process.env.URL : 'http://localhost:3000',
-  compressHTML: process.env.NETLIFY ? true : false,
+  site: process.env.CI ? 'https://radenpioneer.blog' : 'http://localhost:3000',
+  compressHTML: process.env.CI ? true : false,
   integrations: [
-    mdx(),
     react(),
     sitemap(),
     markdoc(),
-    AstroPWA({
-      strategies: 'injectManifest',
-      srcDir: 'src/includes',
-      filename: 'sw.ts',
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
-      manifest,
-    }),
+    // AstroPWA({
+    //   strategies: 'injectManifest',
+    //   srcDir: 'src/includes',
+    //   filename: 'sw.ts',
+    //   registerType: 'autoUpdate',
+    //   includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+    //   manifest,
+    // }),
   ],
-  experimental: {
-    assets: true,
-  },
   redirects: {
     '/esai': '/tags/esai',
   },
@@ -52,4 +48,6 @@ export default defineConfig({
       exclude: ['@resvg/resvg-js'],
     },
   },
+  output: 'hybrid',
+  adapter: vercel(),
 })
