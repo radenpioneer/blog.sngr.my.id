@@ -7,10 +7,6 @@ const posts = await getCollection(
   'blog',
   ({ data: post }) =>
     !post.draft && !post.tags?.some((t) => t.slug === 'catatan-mingguan')
-).then((posts) =>
-  posts.sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-  )
 )
 ---
 

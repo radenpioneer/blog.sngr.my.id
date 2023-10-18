@@ -1,0 +1,44 @@
+---
+import Layout from '~/layout/layout.astro'
+import { type CollectionEntry, getCollection } from 'astro:content'
+import List from '~/components/layout/list'
+
+interface Props {
+  tag: { name: string; slug: string }
+  posts: CollectionEntry<'blog'>[]
+}
+
+export const getStaticPaths = async () => {
+  const allPosts = await getCollection(
+    'blog',
+    ({ data: post }) => !post.draft && post.tags
+  )
+
+  const allTags = [
+    ...new Set(allPosts.map(({ data: post }) => post.tags).flat()),
+  ]
+
+  return allTags.map((tag) => {
+    const posts = allPosts.filter(({ data: post }) =>
+      post.tags!.some((t) => t.slug === tag!.slug)
+    )
+    return {
+      params: { tag: tag!.slug },
+      props: { tag, posts },
+    }
+  })
+}
+
+const { tag, posts } = Astro.props
+---
+
+<Layout title={`Tag: ${tag.name}`}>
+  <section class="max-w-screen-lg mx-auto px-4 py-12">
+    <h1
+      class="font-black text-4xl md:text-6xl text-[--primary] dark:text-[--primary-dark] mb-12"
+    >
+      Tag: {tag.name}
+    </h1>
+    <List posts={posts} />
+  </section>
+</Layout>

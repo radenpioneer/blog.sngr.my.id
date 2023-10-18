@@ -8,7 +8,7 @@ const Header: FC<{ title: string; image: GetImageResult }> = ({
   return (
     <header>
       <div className="flex max-w-screen-lg mx-auto px-4 py-4">
-        <a href="#" className="flex gap-2 items-center">
+        <a href="/" className="flex gap-2 items-center">
           <img
             src={image.src}
             className="rounded-full w-[35px] h-[35px]"

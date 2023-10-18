@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './base.astro'
 import Header from '~/components/layout/header.astro'
+import Footer from '~/components/layout/footer.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
 import '@fontsource-variable/plus-jakarta-sans'
@@ -28,8 +29,9 @@ const { title, description } = Astro.props as {
   <!-- <body /> -->
   <Fragment>
     <Header />
-    <main>
+    <main class="min-h-[85vh]">
       <slot />
     </main>
+    <Footer />
   </Fragment>
 </BaseLayout>
