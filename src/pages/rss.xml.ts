@@ -12,11 +12,16 @@ export const GET = async () => {
     description: site.data.description,
     site: import.meta.env.SITE,
     stylesheet: '/rss.xsl',
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: new Date(post.data.date),
-      description: post.data.description || extractExcerpt(post.body),
-      link: generateUrl(post.slug, new Date(post.data.date)),
-    })),
+    items: posts
+      .sort(
+        (a, b) =>
+          new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+      )
+      .map((post) => ({
+        title: post.data.title,
+        pubDate: new Date(post.data.date),
+        description: post.data.description || extractExcerpt(post.body),
+        link: generateUrl(post.slug, new Date(post.data.date)),
+      })),
   })
 }
