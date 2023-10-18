@@ -7,7 +7,7 @@ const Header: FC<{ title: string; image: GetImageResult }> = ({
 }) => {
   return (
     <header>
-      <div className="flex max-w-screen-xl mx-auto px-8 py-4">
+      <div className="flex max-w-screen-xl mx-auto px-4 py-4">
         <a href="#" className="flex gap-2 items-center">
           <img
             src={image.src}
@@ -15,7 +15,7 @@ const Header: FC<{ title: string; image: GetImageResult }> = ({
             {...image.attributes}
             alt=""
           />
-          <span className="font-black text-xl">{title}</span>
+          <span className="font-black text-lg">{title}</span>
         </a>
       </div>
     </header>
