@@ -4,15 +4,17 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "pnpm generate-icons && astro build",
-    "check": "astro sync && pnpm dlx concurrently \"pnpm exec prettier --plugin=prettier-plugin-astro --check .\" \"astro check\" \"tsc --noEmit\"",
+    "build": "astro build",
+    "check": "astro sync && pnpm dlx concurrently \"prettier --plugin=prettier-plugin-astro --check .\" \"astro check\" \"tsc --noEmit\"",
     "dev": "astro dev",
-    "format": "pnpm exec prettier --plugin=prettier-plugin-astro --write .",
+    "format": "prettier --plugin=prettier-plugin-astro --write .",
     "preview": "astro preview",
     "start": "pnpm build && pnpm preview",
-    "generate-icons": "pwa-assets-generator --preset minimal public/logo.jpg"
+    "generate-icons": "pwa-assets-generator --preset minimal public/logo.jpg",
+    "prebuild": "pnpm check && pnpm generate-icons"
   },
   "dependencies": {
+    "@astrojs/check": "^0.2.0",
     "@astrojs/markdoc": "0.6.0",
     "@astrojs/react": "3.0.3",
     "@astrojs/rss": "3.0.0",
@@ -28,7 +30,6 @@
     "@vite-pwa/astro": "0.1.3",
     "astro": "3.3.2",
     "astro-seo": "0.8.0",
-    "external-svg-loader": "1.6.10",
     "marked": "9.1.2",
     "marked-smartypants": "1.1.3",
     "postcss": "8.4.31",
