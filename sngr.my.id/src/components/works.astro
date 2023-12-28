@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { WorksList } from './works'
+import { getImage } from 'astro:assets'
+
+interface Props {
+  works: Array<CollectionEntry<'works'>>
+}
+
+const { works: worksCollection } = Astro.props
+
+const works = await Promise.all(
+  worksCollection
+    .sort((a, b) => b.data.finishedBy.getTime() - a.data.finishedBy.getTime())
+    .slice(0, 4)
+    .map(async (work) => ({
+      image: await getImage({
+        src: `/screenshot?url=${encodeURIComponent(work.data.url)}`,
+        width: 360,
+        height: 203,
+      }),
+      slug: work.slug,
+      ...work.data,
+    }))
+)
+
+export type Works = typeof works
+---
+
+<WorksList works={works} />
