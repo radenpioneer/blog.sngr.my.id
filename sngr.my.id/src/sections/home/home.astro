@@ -1,0 +1,14 @@
+---
+import HomeComponent from './home'
+import { getEntry } from 'astro:content'
+import { getImage } from 'astro:assets'
+
+const {
+  data: { title, bio, image },
+} = await getEntry('home', 'home')
+const profileImage = await getImage({ ...image, width: 80, height: 80 })
+---
+
+<section class="min-h-screen flex flex-col items-center justify-center">
+  <HomeComponent title={title} bio={bio} image={profileImage} />
+</section>

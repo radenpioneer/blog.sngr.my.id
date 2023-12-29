@@ -1,0 +1,12 @@
+{
+  "name": "sngr.my.id",
+  "version": "1.0.0",
+  "description": "This monorepo is home of: - [sngr.my.id](http://sngr.my.id) -- Personal, official portfolio. - [blog.sngr.my.id](http://blog.sngr.my.id) -- Personal, rarely updated personal blog.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

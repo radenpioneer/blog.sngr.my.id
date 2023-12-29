@@ -1,17 +1,8 @@
 ---
 import Layout from '~/layouts/layout.astro'
-import { PostsList } from '~/components/posts'
-import Works from '~/components/works.astro'
-import { getPosts, type Posts } from '~/data/post'
-import { getCollection } from 'astro:content'
-
-const posts = (await getPosts()) as Posts
-const works = await getCollection('works')
-
-export const prerender = false
+import Home from '~/sections/home/home.astro'
 ---
 
 <Layout>
-  <PostsList posts={posts} />
-  <Works works={works} />
+  <Home />
 </Layout>

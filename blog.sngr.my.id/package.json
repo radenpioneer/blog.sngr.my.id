@@ -1,6 +1,6 @@
 {
-  "name": "radenpioneer.blog",
-  "version": "0.0.1",
+  "name": "blog.sngr.my.id",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "astro": "astro",
