@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './base.astro'
 import Header from '~/sections/header/header.astro'
+import Analytics from '~/sections/scripts/analytics.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
 import { getImage } from 'astro:assets'
@@ -28,6 +29,7 @@ const { title, description, hidden = false } = Astro.props
     />
     <link rel="preload" href={logoProps.src} as="image" />
     <slot name="head" />
+    <Analytics />
   </Fragment>
 
   <!-- <body /> -->
