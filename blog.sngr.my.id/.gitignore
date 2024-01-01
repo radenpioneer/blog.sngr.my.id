@@ -1,13 +1,7 @@
 # build output
 dist/
-public/pwa-*
-public/maskable-icon-*
-public/apple-touch-icon-*
-public/favicon.ico
-
 # generated types
 .astro/
-env.d.ts
 
 # dependencies
 node_modules/
@@ -18,6 +12,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+
 # environment variables
 .env
 .env.production
@@ -25,9 +20,5 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# Local Netlify folder
+# vercel
 .vercel
-
-# Lighthouse tests
-C:*
-.unlighthouse

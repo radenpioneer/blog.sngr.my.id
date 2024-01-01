@@ -1,17 +1,8 @@
 ---
-import Layout from '~/layout/layout.astro'
-import { getCollection } from 'astro:content'
-import List from '~/components/layout/list'
-
-const posts = await getCollection(
-  'blog',
-  ({ data: post }) =>
-    !post.draft && !post.tags?.some((t) => t.slug === 'catatan-mingguan')
-)
+import Layout from '~/layouts/layout.astro'
+import Home from '~/sections/home/home.astro'
 ---
 
 <Layout>
-  <section class="max-w-screen-lg mx-auto px-4 py-12">
-    <List posts={posts} />
-  </section>
+  <Home />
 </Layout>

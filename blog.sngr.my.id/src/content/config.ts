@@ -1,45 +1,31 @@
-import { defineCollection, z } from 'astro:content'
-
-const BasicSchema = z.object({
-  title: z.string(),
-  description: z.string().optional(),
-  draft: z.boolean().default(false),
-})
+import { defineCollection, reference, z } from "astro:content";
 
 export const collections = {
-  blog: defineCollection({
-    type: 'content',
-    schema: ({ image }) =>
-      BasicSchema.extend({
-        image: image().or(z.string().url()).optional(),
-        date: z.string(),
-        tags: z
-          .array(z.object({ name: z.string(), slug: z.string() }))
-          .optional(),
-      }),
-  }),
-  page: defineCollection({
-    type: 'content',
-    schema: ({ image }) =>
-      BasicSchema.extend({
-        image: image().or(z.string().url()).optional(),
-      }),
-  }),
-  site: defineCollection({
-    type: 'data',
-    schema: ({ image }) =>
-      z.object({
-        title: z.string(),
-        description: z.string(),
-        image: image().optional(),
-        menu: z.array(
-          z
-            .object({
-              name: z.string(),
-              slug: z.string(),
-            })
-            .optional()
-        ),
-      }),
-  }),
+    posts: defineCollection({
+        type: 'content',
+        schema: ({ image }) => z.object({
+            title: z.string(),
+            description: z.string().optional(),
+            date: z.string(),
+            category: reference('categories'),
+            image: image().optional(),
+            draft: z.boolean(),
+            hidden: z.boolean().optional()
+        })
+    }),
+    categories: defineCollection({
+        type: 'data',
+        schema: z.object({
+            title: z.string(),
+            description: z.string().optional(),
+        })
+    }),
+    site: defineCollection({
+        type: 'data',
+        schema: ({ image }) => z.object({
+            title: z.string(),
+            description: z.string(),
+            logo: image()
+        })
+    })
 }

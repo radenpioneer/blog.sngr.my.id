@@ -4,9 +4,13 @@
   "description": "This monorepo is home of: - [sngr.my.id](http://sngr.my.id) -- Personal, official portfolio. - [blog.sngr.my.id](http://blog.sngr.my.id) -- Personal, rarely updated personal blog.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.1.1",
+    "prettier-plugin-astro": "0.12.3"
+  }
 }

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://radenpioneer.blog/sitemap-index.xml

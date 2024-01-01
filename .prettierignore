@@ -12,3 +12,7 @@ pnpm-lock.yaml
 # vercel
 .vercel
 vercel.json
+
+# cms content
+blog.sngr.my.id/src/content
+!blog.sngr.my.id/src/content/config.ts

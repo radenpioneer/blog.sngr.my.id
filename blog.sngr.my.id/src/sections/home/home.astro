@@ -1,0 +1,19 @@
+---
+import Post from './post'
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection(
+  'posts',
+  (post) => !post.data.draft || !post.data.hidden
+).then((post) =>
+  post.sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  )
+)
+---
+
+<section>
+  <div class="flex flex-col gap-8 max-w-screen-md mx-auto">
+    {posts.map((post) => <Post post={post} client:visible />)}
+  </div>
+</section>
