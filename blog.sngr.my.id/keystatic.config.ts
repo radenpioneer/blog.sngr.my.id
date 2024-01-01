@@ -4,6 +4,7 @@ export default config({
   storage: {
     kind: 'github',
     repo: 'radenpioneer/sngr.my.id',
+    pathPrefix: 'blog.sngr.my.id',
   },
   ui: {
     brand: {

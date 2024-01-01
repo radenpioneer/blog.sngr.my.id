@@ -9,13 +9,7 @@ import vercel from '@astrojs/vercel/serverless'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.sngr.my.id',
-  integrations: [
-    tailwind(),
-    react(),
-    markdoc(),
-    keystatic(),
-    sitemap(),
-  ],
+  integrations: [tailwind(), react(), markdoc(), keystatic(), sitemap()],
   output: 'hybrid',
   adapter: vercel({
     speedInsights: true,
