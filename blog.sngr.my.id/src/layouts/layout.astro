@@ -27,6 +27,7 @@ const { title, description, hidden = false } = Astro.props
       noindex={hidden}
       nofollow={hidden}
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preload" href={logoProps.src} as="image" />
     <slot name="head" />
     <Analytics />
