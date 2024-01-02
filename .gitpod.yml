@@ -5,6 +5,6 @@ image: gitpod/workspace-full:latest
 tasks:
   # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
   - init: |
-    npm i -g turbo vercel
-    pnpm i --frozen-lockfile 
+      npm i -g turbo vercel
+      pnpm i --frozen-lockfile 
 
