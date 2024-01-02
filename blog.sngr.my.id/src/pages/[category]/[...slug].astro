@@ -4,16 +4,20 @@ import { getCollection } from 'astro:content'
 import { getImage } from 'astro:assets'
 import Layout from '~/layouts/layout.astro'
 import { getExcerpt } from '~/utils/excerpt'
+import { getISODate, getLocalDate } from '~/utils/date'
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts')
   return posts.map((post) => {
     const cat = post.data.category
+    const month = (new Date(post.data.date).getMonth() + 1)
+      .toString()
+      .padStart(2, '0')
     const year = new Date(post.data.date).getFullYear()
     return {
       params: {
         category: cat.id,
-        slug: `${year}/${post.slug}`,
+        slug: `${year}/${month}/${post.slug}`,
       },
       props: { post, cat },
     }
@@ -23,7 +27,11 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props
 const { Content } = await post.render()
 const image = post.data.image
-  ? await getImage({ src: post.data.image, width: 768, height: 432 })
+  ? await getImage({
+      src: post.data.image,
+      widths: [240, 540, 720, post.data.image.width],
+      sizes: `(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post.data.image.width}px`,
+    })
   : null
 ---
 
@@ -34,20 +42,45 @@ const image = post.data.image
   hidden={(post.data.hidden as boolean) || false}
 >
   <Fragment slot="head">
-    {image && <link rel="preload" href={image.src} as="image" />}
+    {
+      image && (
+        <link
+          rel="preload"
+          href={image.src}
+          imagesrcset={image.srcSet.attribute}
+          imagesizes={image.attributes.sizes}
+          as="image"
+        />
+      )
+    }
   </Fragment>
   <section class="max-w-screen-md mx-auto">
     <article class="prose prose-lg max-w-none">
-      <hgroup class="not-prose flex flex-col gap-4">
-        <h1 class="font-extrabold text-4xl">{post.data.title}</h1>
+      <hgroup class="not-prose flex flex-col gap-8 mb-12">
+        <h1 class="font-extrabold text-4xl md:text-6xl leading-snug">
+          {post.data.title}
+        </h1>
+        {
+          post.data.description && (
+            <p class="text-xl md:text-3xl text-gray-500 leading-snug">
+              {post.data.description}
+            </p>
+          )
+        }
+        <div class="text-sm md:text-base text-gray-500">
+          <time datetime={getISODate(post.data.date)}>
+            {getLocalDate(post.data.date)}
+          </time>
+        </div>
         {
           image && (
             <img
               src={image.src}
-              class="aspect-[16/9] object-cover"
-              {...image.attributes}
+              srcset={image.srcSet.attribute}
+              class="object-cover object-center"
               loading="eager"
               alt={post.data.title}
+              {...image.attributes}
             />
           )
         }

@@ -5,6 +5,7 @@ import Analytics from '~/sections/scripts/analytics.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
 import { getImage } from 'astro:assets'
+import '@fontsource-variable/plus-jakarta-sans'
 
 const site = await getEntry('site', 'site')
 const logoProps = await getImage({ src: site.data.logo, width: 70, height: 70 })

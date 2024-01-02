@@ -7,14 +7,17 @@ const PostSection: FC<{ post: CollectionEntry<'posts'> }> = ({ post }) => {
   const url = [
     post.data.category.id,
     new Date(post.data.date).getFullYear(),
+    (new Date(post.data.date).getMonth() + 1).toString().padStart(2, '0'),
     post.slug,
   ].join('/')
 
   return (
-    <article className="prose">
-      <h2>
-        <a href={url}>{post.data.title}</a>
-      </h2>
+    <article className="prose max-w-none">
+      <hgroup className="not-prose">
+        <h2 className="font-bold text-2xl md:text-3xl leading-snug hover:underline">
+          <a href={url}>{post.data.title}</a>
+        </h2>
+      </hgroup>
       <>{getExcerpt(post.body, 'html')}</>
       <div className="not-prose flex gap-2 items-center text-xs">
         <a
