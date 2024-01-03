@@ -14,6 +14,10 @@ export default config({
     brand: {
       name: 'blog.sngr.my.id',
     },
+    navigation: {
+      Content: ['posts', 'pages', '---', 'series', 'categories'],
+      Site: ['settings'],
+    },
   },
   singletons: {
     settings: singleton({
