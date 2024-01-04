@@ -10,7 +10,13 @@ import Icons from 'unplugin-icons/vite'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.sngr.my.id',
-  integrations: [tailwind(), react(), markdoc({ allowHTML: true }), keystatic(), sitemap()],
+  integrations: [
+    tailwind(),
+    react(),
+    markdoc({ allowHTML: true }),
+    keystatic(),
+    sitemap(),
+  ],
   output: 'hybrid',
   adapter: vercel({
     speedInsights: true,

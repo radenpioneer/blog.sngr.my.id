@@ -1,9 +1,8 @@
 # Image of workspace. Learn more: https://www.gitpod.io/docs/configure/workspaces/workspace-image
-image: gitpod/workspace-full:latest
+image:
+  file: .gitpod.Dockerfile
 
 # List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
   # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
-  - init: |
-      npm i -g turbo vercel
-      pnpm i --frozen-lockfile
+  - init: pnpm i --frozen-lockfile
