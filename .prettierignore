@@ -5,6 +5,7 @@ src/data/schema.ts
 
 # built
 dist
+.next
 
 # lockfile
 pnpm-lock.yaml
