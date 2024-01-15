@@ -16,12 +16,12 @@
     "@astrojs/sitemap": "3.0.4",
     "@astrojs/tailwind": "5.1.0",
     "@astrojs/vercel": "6.1.2",
-    "@fontsource-variable/plus-jakarta-sans": "^5.0.19",
-    "@iconify/json": "^2.2.163",
+    "@fontsource-variable/plus-jakarta-sans": "5.0.19",
+    "@iconify/json": "2.2.163",
     "@keystatic/astro": "2.0.3",
     "@keystatic/core": "0.2.9",
-    "@svgr/core": "^8.1.0",
-    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/core": "8.1.0",
+    "@svgr/plugin-jsx": "8.1.0",
     "@tailwindcss/typography": "0.5.10",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
@@ -34,6 +34,6 @@
     "sharp": "0.33.1",
     "tailwindcss": "3.4.0",
     "typescript": "5.3.3",
-    "unplugin-icons": "^0.18.1"
+    "unplugin-icons": "0.18.1"
   }
 }
