@@ -12,14 +12,14 @@ importers:
         specifier: 3.2.4
         version: 3.2.4
       prettier-plugin-astro:
-        specifier: 0.12.3
-        version: 0.12.3
+        specifier: 0.13.0
+        version: 0.13.0
 
   blog.sngr.my.id:
     dependencies:
       '@astrojs/check':
         specifier: 0.4.1
-        version: 0.4.1(prettier-plugin-astro@0.12.3)(prettier@3.2.4)(typescript@5.3.3)
+        version: 0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       '@astrojs/markdoc':
         specifier: 0.8.3
         version: 0.8.3(@types/react@18.2.48)(astro@4.2.1)(react@18.2.0)
@@ -39,14 +39,14 @@ importers:
         specifier: 5.0.19
         version: 5.0.19
       '@iconify/json':
-        specifier: 2.2.170
-        version: 2.2.170
+        specifier: 2.2.172
+        version: 2.2.172
       '@keystatic/astro':
         specifier: 2.0.3
-        version: 2.0.3(@keystatic/core@0.3.3)(astro@4.2.1)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.0.3(@keystatic/core@0.3.4)(astro@4.2.1)(react-dom@18.2.0)(react@18.2.0)
       '@keystatic/core':
-        specifier: 0.3.3
-        version: 0.3.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: 0.3.4
+        version: 0.3.4(react-dom@18.2.0)(react@18.2.0)
       '@svgr/core':
         specifier: 8.1.0
         version: 8.1.0(typescript@5.3.3)
@@ -180,13 +180,13 @@ packages:
     resolution: {integrity: sha512-gFPqTG7otEJ8uP6wrhDv6mqwGWYZKNvAcCq6u9hOj0c+IKCEsY4L1oC9trPq2SaWIzAfHvqfBDxF591JkMf+kg==}
     dev: false
 
-  /@astrojs/check@0.4.1(prettier-plugin-astro@0.12.3)(prettier@3.2.4)(typescript@5.3.3):
+  /@astrojs/check@0.4.1(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3):
     resolution: {integrity: sha512-XEsuU4TlWkgcsvdeessq5mXLXV1fejtxIioCPv/FfhTzb1bDYe2BtLiSBK+rFTyD9Hl686YOas9AGNMJcpoRsw==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@astrojs/language-server': 2.6.2(prettier-plugin-astro@0.12.3)(prettier@3.2.4)(typescript@5.3.3)
+      '@astrojs/language-server': 2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3)
       chokidar: 3.5.3
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -212,7 +212,7 @@ packages:
     resolution: {integrity: sha512-06DD2ZnItMwUnH81LBLco3tWjcZ1lGU9rLCCBaeUCGYe9cI0wKyY2W3kDyoW1I6GmcWgt1fu+D1CTvz+FIKf8A==}
     dev: false
 
-  /@astrojs/language-server@2.6.2(prettier-plugin-astro@0.12.3)(prettier@3.2.4)(typescript@5.3.3):
+  /@astrojs/language-server@2.6.2(prettier-plugin-astro@0.13.0)(prettier@3.2.4)(typescript@5.3.3):
     resolution: {integrity: sha512-RYzPRhS/WBXK5JtfR+0+nGj+N3VbJd5jU/uSNUev9baUx/RLmUwDk1f6Oy8QDEfDDLAr76Ig8YeDD/nxPdBSLw==}
     hasBin: true
     peerDependencies:
@@ -235,7 +235,7 @@ packages:
       fast-glob: 3.3.2
       muggle-string: 0.3.1
       prettier: 3.2.4
-      prettier-plugin-astro: 0.12.3
+      prettier-plugin-astro: 0.13.0
       volar-service-css: 0.0.17(@volar/language-service@1.11.1)
       volar-service-emmet: 0.0.17(@volar/language-service@1.11.1)
       volar-service-html: 0.0.17(@volar/language-service@1.11.1)
@@ -1074,8 +1074,8 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@iconify/json@2.2.170:
-    resolution: {integrity: sha512-KJQ+LPj5KOpBrTknm0vpb2A6+T12ZyIFInubW3kT/58eZRKtiDv5D87QWVXczL5/uyDr2rkRu8rAfOrGr/UFhA==}
+  /@iconify/json@2.2.172:
+    resolution: {integrity: sha512-/QX702onUWOyj7RZyZD1x+QgrjYMUHRPGaz7ycqXg+YOcxYKZ0pZ6HqaL6njstTc9THrWnTF0ZsQEM1eCq86Ag==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
@@ -1446,7 +1446,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@keystatic/astro@2.0.3(@keystatic/core@0.3.3)(astro@4.2.1)(react-dom@18.2.0)(react@18.2.0):
+  /@keystatic/astro@2.0.3(@keystatic/core@0.3.4)(astro@4.2.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-rEE7F5rF8DpepdNrEO7OeU4S+WfLZN5gHI568qFXepx6o864KtFQ3FI7VMsvAqAzPGTuMqco4Fuf89dNHLDOsw==}
     peerDependencies:
       '@keystatic/core': '*'
@@ -1455,7 +1455,7 @@ packages:
       react-dom: ^18.2.0
     dependencies:
       '@babel/runtime': 7.23.7
-      '@keystatic/core': 0.3.3(react-dom@18.2.0)(react@18.2.0)
+      '@keystatic/core': 0.3.4(react-dom@18.2.0)(react@18.2.0)
       '@types/react': 18.2.48
       astro: 4.2.1(typescript@5.3.3)
       cookie: 0.5.0
@@ -1464,8 +1464,8 @@ packages:
       set-cookie-parser: 2.6.0
     dev: false
 
-  /@keystatic/core@0.3.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-PWnYFU3+F5FDxha3g1aCzwVcHZxKRiQbmC/SFQfEL4SniZAlc34JrNHS5ws1rvQYbIxTzW6dlY9YpP3MxDVsNQ==}
+  /@keystatic/core@0.3.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-1LeYsXNQfXEN6KtWh4Xbi5eMWdAR67YyCX8mq0RQjcvXFnHcUtHmksZ8ddqx2hRHqu5Lav1Z7JJd21MbPFD62Q==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -7512,8 +7512,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-astro@0.12.3:
-    resolution: {integrity: sha512-GthUSu3zCvmtVyqlArosez0xE08vSJ0R1sWurxIWpABaCkNGYFANoUdFkqmIo54EV2uPLGcVJzOucWvCjPBWvg==}
+  /prettier-plugin-astro@0.13.0:
+    resolution: {integrity: sha512-5HrJNnPmZqTUNoA97zn4gNQv9BgVhv+et03314WpQ9H9N8m2L9OSV798olwmG2YLXPl1iSstlJCR1zB3x5xG4g==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@astrojs/compiler': 1.8.2
