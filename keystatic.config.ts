@@ -4,8 +4,7 @@ export default config({
   storage: import.meta.env.PROD
     ? {
         kind: 'github',
-        repo: 'radenpioneer/sngr.my.id',
-        pathPrefix: 'blog.sngr.my.id',
+        repo: 'radenpioneer/blog.sngr.my.id',
       }
     : {
         kind: 'local',
