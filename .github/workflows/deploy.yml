@@ -14,24 +14,14 @@ on:
           - preview
         default: production
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - dir: sngr.my.id
-            projectId: VERCEL_PROJECT_ID_ROOT
-          - dir: blog.sngr.my.id
-            projectId: VERCEL_PROJECT_ID_BLOG
-    env:
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets[matrix.projectId] }}
-      TURBO_TEAM: ${{ vars.TURBO_TOKEN}}
-      TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-    defaults:
-      run:
-        working-directory: ${{ matrix.dir }}
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,14 +36,6 @@ jobs:
       
       # caching
       - uses: actions/cache@v2
-        if: matrix.dir == 'sngr.my.id'
-        with:
-          path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-next-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-next-
-      - uses: actions/cache@v2
-        if: matrix.dir == 'blog.sngr.my.id'
         with:
           path: ${{ github.workspace }}/node_modules/.astro
           key: ${{ runner.os }}-astro-${{ hashFiles('**/pnpm-lock.yaml') }}
