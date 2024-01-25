@@ -15,7 +15,7 @@
     "@astrojs/react": "3.0.9",
     "@astrojs/sitemap": "3.0.5",
     "@astrojs/tailwind": "5.1.0",
-    "@astrojs/vercel": "6.1.4",
+    "@astrojs/vercel": "7.0.1",
     "@fontsource-variable/plus-jakarta-sans": "5.0.19",
     "@iconify/json": "2.2.172",
     "@keystatic/astro": "2.0.3",
