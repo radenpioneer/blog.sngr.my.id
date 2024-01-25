@@ -30,17 +30,13 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
-      
-      # caching
+          cache-dependency-path: 'pnpm-lock.yaml'
       - uses: actions/cache@v2
         with:
-          path: ${{ github.workspace }}/node_modules/.astro
+          path: ./node_modules/.astro
           key: ${{ runner.os }}-astro-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-astro-
-
-      # installation
       - run: pnpm install --global vercel@latest
       - run: pnpm install --frozen-lockfile
 
