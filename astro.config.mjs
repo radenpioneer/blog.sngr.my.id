@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
 import markdoc from '@astrojs/markdoc'
 import keystatic from '@keystatic/astro'
@@ -11,16 +10,13 @@ import Icons from 'unplugin-icons/vite'
 export default defineConfig({
   site: 'https://blog.sngr.my.id',
   integrations: [
-    tailwind(),
     react(),
     markdoc({ allowHTML: true }),
     keystatic(),
     sitemap(),
   ],
   output: 'hybrid',
-  adapter: vercel({
-    speedInsights: true,
-  }),
+  adapter: vercel(),
   vite: {
     plugins: [
       Icons({

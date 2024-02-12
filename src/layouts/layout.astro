@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './base.astro'
-import Header from '~/sections/header/header.astro'
-import Analytics from '~/sections/scripts/analytics.astro'
+import Analytics from '~/components/analytics.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
 import { getImage } from 'astro:assets'
@@ -35,8 +34,9 @@ const { title, description, hidden = false } = Astro.props
   </Fragment>
 
   <!-- <body /> -->
-  <Header site={site} logo={logoProps} />
-  <main class="min-h-screen pt-32 pb-24 px-4">
-    <slot />
-  </main>
+  <slot />
 </BaseLayout>
+
+<style lang="scss">
+  @use "@picocss/pico";
+</style>
