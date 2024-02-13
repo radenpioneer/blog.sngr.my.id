@@ -11,6 +11,7 @@ const logo = await getImage({ src: site.data.logo, width: 35, height: 35, densit
 <BaseLayout>
     <!-- head -->
     <Fragment slot="head">
+        <link rel="preload" href={logo.src} imagesrcset={logo.srcSet.attribute} imagesizes={logo.attributes.sizes} as="image">
         <slot name="head" />
     </Fragment>
 
@@ -22,7 +23,7 @@ const logo = await getImage({ src: site.data.logo, width: 35, height: 35, densit
 </BaseLayout>
 
 <style lang="scss" is:global>
-    @use "@picocss/pico";
+    @use "@picocss/pico/scss/pico";
 
     body {
         min-height: 100vh;

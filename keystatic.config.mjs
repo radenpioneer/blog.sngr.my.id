@@ -141,6 +141,7 @@ export default config({
       label: 'Category',
       slugField: 'title',
       path: 'src/content/categories/*',
+      format: 'json',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
@@ -150,6 +151,7 @@ export default config({
       label: 'Series',
       slugField: 'title',
       path: 'src/content/series/*',
+      format: 'json',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
