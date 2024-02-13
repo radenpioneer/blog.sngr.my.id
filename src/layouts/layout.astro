@@ -1,6 +1,11 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from "./base.astro";
 import Nav from "~/components/nav.astro";
+import { getImage } from "astro:assets";
+
+const site = await getEntry('site', 'site')
+const logo = await getImage({ src: site.data.logo, width: 35, height: 35, densities: [1, 1.5, 2], loading: 'eager' })
 ---
 
 <BaseLayout>
@@ -11,7 +16,7 @@ import Nav from "~/components/nav.astro";
 
     <!-- body -->
     <header>
-        <Nav />
+        <Nav site={site} logo={logo} />
     </header>
     <slot />
 </BaseLayout>
