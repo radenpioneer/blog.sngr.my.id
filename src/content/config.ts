@@ -47,11 +47,21 @@ export const collections = {
         title: z.string(),
         description: z.string(),
         logo: image(),
+        icon: z.string(),
         menu: z.array(
-          z.object({
-            name: z.string(),
-            slug: z.string(),
-          })
+          z.discriminatedUnion('discriminant', [
+            z.object({
+                discriminant: z.literal('link'),
+                value: z.object({
+                    title: z.string(),
+                    url: z.string()
+                })
+            }),
+            z.object({
+                discriminant: z.literal('page'),
+                value: reference('pages')
+            })
+          ])
         ),
       }),
   }),

@@ -22,6 +22,7 @@ export default config({
     settings: singleton({
       label: 'Site Settings',
       path: 'src/content/site/site',
+      format: 'json',
       schema: {
         title: fields.text({ label: 'Site Title' }),
         description: fields.text({
@@ -33,9 +34,30 @@ export default config({
           directory: 'src/assets/site',
           publicPath: '~/assets/site',
         }),
-        menu: fields.array(fields.slug({ name: { label: 'Title' } }), {
-          label: 'Main Menu',
-          itemLabel: (props) => props.value.name,
+        icon: fields.image({
+            label: 'Icon',
+            directory: 'public',
+            publicPath: '/',
+          }),
+        menu: fields.blocks({
+            link: {
+                label: 'Link',
+              itemLabel: (props) => props.fields.title.value,
+              schema: fields.object({
+                title: fields.text({ label: 'Title' }),
+                url: fields.text({ label: 'URL' })
+              })
+            },
+            page: {
+              label: 'Page',
+              itemLabel: props => props.value,
+              schema: fields.relationship({
+                collection: 'pages',
+                label: 'Pages',
+              })
+            }
+        }, {
+          label: 'Main Menu'
         }),
       },
     }),
@@ -119,6 +141,7 @@ export default config({
       label: 'Category',
       slugField: 'title',
       path: 'src/content/categories/*',
+      format: 'json',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
@@ -128,6 +151,7 @@ export default config({
       label: 'Series',
       slugField: 'title',
       path: 'src/content/series/*',
+      format: 'json',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
@@ -138,7 +162,7 @@ export default config({
           }),
           {
             label: 'Posts',
-            itemLabel: (props) => props.value as string,
+            itemLabel: (props) => props.value,
           }
         ),
       },

@@ -1,0 +1,75 @@
+---
+import type { GetImageResult } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import { getEntry } from 'astro:content'
+
+interface Props {
+    site: CollectionEntry<'site'>
+    logo: GetImageResult
+}
+
+const { site, logo } = Astro.props
+const menu = await Promise.all(site.data.menu.map(async entry => {
+    if (entry.discriminant === 'link') {
+        return entry.value
+    } else {
+        const page = await getEntry('pages', entry.value.slug)
+        return {
+            title: page.data.title,
+            url: `/${page.slug}`
+        }
+    }
+}))
+---
+
+<nav class="container-fluid">
+    <ul>
+        <li>
+            <a href="#">
+                <img class="logo" src={logo.src} srcset={logo.srcSet.attribute} {...logo.attributes} alt={site.data.title}>
+            </a>
+        </li>
+    </ul>
+
+    <!-- mobile only -->
+    <ul class="mobile">
+        <li>
+            <details class="dropdown">
+                <summary role="button" class="outline">=</summary>
+                <ul>
+                    {menu.map(entry => (
+                        <li><a href={entry.url}>{entry.title}</a></li>
+                    ))}
+                </ul>
+            </details>
+        </li>
+    </ul>
+</nav>
+
+<style lang="scss">
+    .logo {
+        border-radius: 9999px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @media (min-width: 576px) {
+        .mobile {
+            display: none;
+        }
+    }
+
+    details.dropdown {
+        summary {
+            &::after {
+            background-image: none;
+            width: 0;
+            height: 0;
+        }
+        &+ul {
+            right: 0;
+            left: unset;
+        }
+        }
+    }
+</style>

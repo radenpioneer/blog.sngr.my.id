@@ -1,42 +1,31 @@
 ---
-import BaseLayout from './base.astro'
-import Header from '~/sections/header/header.astro'
-import Analytics from '~/sections/scripts/analytics.astro'
-import { SEO } from 'astro-seo'
-import { getEntry } from 'astro:content'
-import { getImage } from 'astro:assets'
-import '@fontsource-variable/plus-jakarta-sans'
+import { getEntry } from "astro:content";
+import BaseLayout from "./base.astro";
+import Nav from "~/components/nav.astro";
+import { getImage } from "astro:assets";
 
 const site = await getEntry('site', 'site')
-const logoProps = await getImage({ src: site.data.logo, width: 70, height: 70 })
-
-interface Props {
-  title?: string
-  description?: string
-  hidden?: boolean
-}
-
-const { title, description, hidden = false } = Astro.props
+const logo = await getImage({ src: site.data.logo, width: 35, height: 35, densities: [1, 1.5, 2], loading: 'eager' })
 ---
 
 <BaseLayout>
-  <!-- <head/> -->
-  <Fragment slot="head">
-    <SEO
-      title={title ? `${title} \u2014 ${site.data.title}` : site.data.title}
-      description={description || site.data.description}
-      noindex={hidden}
-      nofollow={hidden}
-    />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="preload" href={logoProps.src} as="image" />
-    <slot name="head" />
-    <Analytics />
-  </Fragment>
+    <!-- head -->
+    <Fragment slot="head">
+        <link rel="preload" href={logo.src} imagesrcset={logo.srcSet.attribute} imagesizes={logo.attributes.sizes} as="image">
+        <slot name="head" />
+    </Fragment>
 
-  <!-- <body /> -->
-  <Header site={site} logo={logoProps} />
-  <main class="min-h-screen pt-32 pb-24 px-4">
+    <!-- body -->
+    <header>
+        <Nav site={site} logo={logo} />
+    </header>
     <slot />
-  </main>
 </BaseLayout>
+
+<style lang="scss" is:global>
+    @use "@picocss/pico/scss/pico";
+
+    body {
+        min-height: 100vh;
+    }
+</style>

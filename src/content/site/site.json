@@ -1,0 +1,19 @@
+{
+  "title": "blog.sngr.my.id",
+  "description": "blog pribadi",
+  "logo": "~/assets/site/logo.jpeg",
+  "icon": "/icon.jpeg",
+  "menu": [
+    {
+      "discriminant": "link",
+      "value": {
+        "title": "Beranda",
+        "url": "/"
+      }
+    },
+    {
+      "discriminant": "page",
+      "value": "tentang"
+    }
+  ]
+}
