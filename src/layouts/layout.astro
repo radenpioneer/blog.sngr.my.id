@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./base.astro";
+import Nav from "~/components/nav.astro";
 ---
 
 <BaseLayout>
@@ -9,9 +10,16 @@ import BaseLayout from "./base.astro";
     </Fragment>
 
     <!-- body -->
+    <header>
+        <Nav />
+    </header>
     <slot />
 </BaseLayout>
 
 <style lang="scss" is:global>
     @use "@picocss/pico";
+
+    body {
+        min-height: 100vh;
+    }
 </style>
