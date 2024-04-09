@@ -1,0 +1,11 @@
+{
+  "title": "blog.sngr.my.id",
+  "description": "blog.sngr.my.id",
+  "logo": "~/assets/site/logo.jpeg",
+  "menu": [
+    {
+      "name": "Tentang",
+      "slug": "tentang"
+    }
+  ]
+}
