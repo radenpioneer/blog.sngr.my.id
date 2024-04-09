@@ -20,6 +20,7 @@
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
     "astro": "^4.5.16",
+    "astro-seo": "^0.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.4.4"

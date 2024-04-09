@@ -1,0 +1,17 @@
+---
+import type { Props as LayoutProps } from '~/layouts/layout.astro'
+import Layout from '~/layouts/layout.astro'
+
+interface Props extends LayoutProps {}
+
+const { title, description, hidden } = Astro.props
+---
+
+<Layout title={title} description={description} hidden={hidden}>
+  <main>
+    <article>
+      <h1>{title}</h1>
+      <slot />
+    </article>
+  </main>
+</Layout>

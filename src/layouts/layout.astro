@@ -1,0 +1,34 @@
+---
+import BaseLayout from './base.astro'
+import { SEO } from 'astro-seo'
+import { getEntry } from 'astro:content'
+
+export interface Props {
+  title?: string
+  description?: string
+  hidden?: boolean
+}
+
+const { data: site } = await getEntry('site', 'site')
+const { title, description, hidden } = Astro.props
+---
+
+<BaseLayout>
+  {/* <head> */}
+  <Fragment slot="head">
+    <SEO
+      title={title}
+      titleDefault={site.title}
+      titleTemplate={`%s \u2014 ${site.title}`}
+      description={description || site.description}
+      noindex={hidden}
+      nofollow={hidden}
+    />
+    <slot name="head" />
+  </Fragment>
+
+  {/* <body> */}
+  <Fragment>
+    <slot />
+  </Fragment>
+</BaseLayout>
