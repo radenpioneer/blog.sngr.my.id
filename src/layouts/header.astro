@@ -1,0 +1,24 @@
+---
+import { getEntry } from 'astro:content'
+
+const { data: site } = await getEntry('site', 'site')
+---
+
+<header class="container">
+  <nav>
+    <ul>
+      <li>
+        <a href="/"><b>{site.title}</b></a>
+      </li>
+    </ul>
+    <ul></ul>
+  </nav>
+</header>
+
+<style lang="scss">
+  header {
+    nav {
+      max-width: 768px;
+    }
+  }
+</style>

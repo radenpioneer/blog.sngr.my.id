@@ -1,0 +1,39 @@
+---
+import type { Props as LayoutProps } from '~/layouts/layout.astro'
+import Layout from '~/layouts/layout.astro'
+
+interface Props extends LayoutProps {
+  date?: Date
+}
+
+const { title, description, date, hidden } = Astro.props
+---
+
+<Layout title={title} description={description} hidden={hidden}>
+  <main class="container">
+    <article>
+      <hgroup>
+        <h1>{title}</h1>
+        {
+          date && (
+            <p class="date">
+              <time datetime={date.toISOString()}>
+                {date.toLocaleDateString('id', { dateStyle: 'full' })}
+              </time>
+            </p>
+          )
+        }
+      </hgroup>
+      <slot />
+    </article>
+  </main>
+</Layout>
+
+<style lang="scss">
+  hgroup {
+    text-align: center;
+    .date {
+      margin-top: 0.5rem;
+    }
+  }
+</style>
