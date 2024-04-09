@@ -7,7 +7,7 @@ export default config({
       }
     : {
         kind: 'github',
-        repo: 'radenpioneer/bukuputih',
+        repo: 'radenpioneer/blog.sngr.my.id',
       },
   collections: {
     posts: collection({
