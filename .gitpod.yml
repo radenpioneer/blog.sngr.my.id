@@ -1,0 +1,12 @@
+image: gitpod/workspace-bun
+
+tasks:
+  - init: |
+      bun install
+
+    command: |
+      bun run dev
+
+ports:
+  - port: 4321
+    onOpen: open-browser
