@@ -4,7 +4,7 @@ import Header from './header.astro'
 import Footer from './footer.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
-import '@fontsource-variable/manrope'
+import '@fontsource-variable/rubik'
 
 export interface Props {
   title?: string
@@ -48,7 +48,7 @@ const { title, description, hidden } = Astro.props
 
   :root {
     :is(h1, h2, h3, h4, h5, h6) {
-      --pico-font-family: 'Manrope Variable', var(--pico-font-family-sans-serif);
+      --pico-font-family: 'Rubik Variable', var(--pico-font-family-sans-serif);
     }
   }
 
