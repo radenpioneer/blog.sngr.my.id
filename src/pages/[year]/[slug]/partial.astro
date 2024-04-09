@@ -16,12 +16,13 @@ const {
   data: { title },
 } = postData
 const { Content } = await postData.render()
+const url = `/${new Date(postData.data.date).getFullYear()}/${postData.slug}`
 
 export const partial = true
 export const prerender = false
 ---
 
 <article>
-  <h3>{title}</h3>
+  <h3><a href={url}>{title}</a></h3>
   <Content />
 </article>
