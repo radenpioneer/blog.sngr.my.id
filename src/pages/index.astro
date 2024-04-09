@@ -8,11 +8,12 @@ const posts = getSortedPosts()
 <Layout>
   <main class="container">
     {
-      posts.map((post) => (
+      posts.map((post, i) => (
         <div
           hx-get={`${post.url}/partial`}
-          hx-trigger="revealed"
+          hx-trigger={i >= 2 ? 'revealed' : 'load'}
           hx-swap="outerHTML"
+          style="min-height: 100vh"
         />
       ))
     }
