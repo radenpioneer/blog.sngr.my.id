@@ -1,7 +1,10 @@
 ---
 import BaseLayout from './base.astro'
+import Header from './header.astro'
+import Footer from './footer.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
+import '@fontsource-variable/manrope'
 
 export interface Props {
   title?: string
@@ -29,6 +32,27 @@ const { title, description, hidden } = Astro.props
 
   {/* <body> */}
   <Fragment>
+    <Header />
     <slot />
+    <Footer />
   </Fragment>
 </BaseLayout>
+
+<style lang="scss" is:global>
+  @use '@picocss/pico/scss/pico' with (
+    $theme-color: 'jade',
+    $modules: (
+      'components/card': false,
+    )
+  );
+
+  :root {
+    :is(h1, h2, h3, h4, h5, h6) {
+      --pico-font-family: 'Manrope Variable', var(--pico-font-family-sans-serif);
+    }
+  }
+
+  .container {
+    max-width: 768px;
+  }
+</style>
