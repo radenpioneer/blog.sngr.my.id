@@ -4,15 +4,12 @@ const allPostsData = await getCollection('posts')
 
 export const getSortedPosts = () =>
   allPostsData
-    .sort(
-      (a, b) =>
-        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-    )
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
     .map((post) => {
       return {
-        url: `/${[new Date(post.data.date).getFullYear(), post.slug].join(
-          '/'
-        )}`,
+        url: `/${[post.data.date.getFullYear(), post.slug].join('/')}`,
+        slug: post.slug,
         render: post.render,
         ...post.data,
       }
