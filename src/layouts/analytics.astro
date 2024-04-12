@@ -2,5 +2,9 @@
 const ANALYTICS_ID = import.meta.env.ANALYTICS_ID
 ---
 
-<script defer src="/__analytics/script.js" data-website-id={ANALYTICS_ID}
+<script
+  is:inline
+  defer
+  src="/__analytics/script.js"
+  data-website-id={ANALYTICS_ID}
 ></script>
