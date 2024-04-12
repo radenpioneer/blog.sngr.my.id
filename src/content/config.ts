@@ -38,6 +38,7 @@ export const collections = {
         title: z.string(),
         description: z.string(),
         logo: image(),
+        icon: z.string(),
         menu: z.array(
           z.object({
             name: z.string(),

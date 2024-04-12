@@ -81,6 +81,11 @@ export default config({
           directory: 'src/assets/site',
           publicPath: '~/assets/site',
         }),
+        icon: fields.image({
+          label: 'Icon',
+          directory: 'public',
+          publicPath: '/',
+        }),
         menu: fields.array(fields.slug({ name: { label: 'Title' } }), {
           label: 'Main Menu',
           itemLabel: (props) => props.value.name,

@@ -23,15 +23,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
       - uses: actions/cache@v4
         with:
           path: ./node_modules/.astro
-          key: ${{ runner.os }}-astro-${{ hashFiles('./bun.lockb') }}
+          key: ${{ runner.os }}-astro-${{ hashFiles('./pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-astro-
-      - run: bun install --global vercel@latest
-      - run: bun install --frozen-lockfile
+      - run: pnpm install --global vercel@latest
+      - run: pnpm install --frozen-lockfile
 
       # run on preview
       - if: (github.event_name == 'pull_request') || (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'preview')

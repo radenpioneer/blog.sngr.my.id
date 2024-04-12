@@ -1,14 +1,25 @@
 ---
-import { getEntry } from 'astro:content'
+import { getSiteInfo } from '~/data/site'
+import { Image } from 'astro:assets'
 
-const { data: site } = await getEntry('site', 'site')
+const site = await getSiteInfo()
 ---
 
 <header class="container">
   <nav>
     <ul>
       <li>
-        <a href="/"><b>{site.title}</b></a>
+        <a href="/">
+          <Image
+            class="logo"
+            src={site.logo}
+            width={50}
+            height={50}
+            alt={site.title}
+            loading="eager"
+          />
+          <b>{site.title}</b>
+        </a>
       </li>
     </ul>
     <ul></ul>
@@ -19,6 +30,12 @@ const { data: site } = await getEntry('site', 'site')
   header {
     nav {
       max-width: 768px;
+      .logo {
+        width: 25px;
+        height: 25px;
+        border-radius: 9999px;
+        margin-right: 5px;
+      }
     }
   }
 </style>
