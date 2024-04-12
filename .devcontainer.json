@@ -1,0 +1,12 @@
+{
+    "image": "gitpod/workspace-bun",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "astro-build.astro-vscode",
+          "GitHub.vscode-github-actions"
+        ]
+      }
+    },
+    "postCreateCommand": "bun install"
+  }
