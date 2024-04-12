@@ -7,6 +7,7 @@ import keystatic from '@keystatic/astro'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://blog.sngr.my.id/',
   integrations: [htmx(), react(), markdoc(), keystatic()],
   output: 'hybrid',
   adapter: vercel(),
