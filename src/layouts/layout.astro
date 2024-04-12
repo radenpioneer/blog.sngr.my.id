@@ -2,6 +2,7 @@
 import BaseLayout from './base.astro'
 import Header from './header.astro'
 import Footer from './footer.astro'
+import Icons from './icons.astro'
 import Analytics from './analytics.astro'
 import { SEO } from 'astro-seo'
 import { getEntry } from 'astro:content'
@@ -29,6 +30,7 @@ const { title, description, hidden } = Astro.props
       nofollow={hidden}
     />
     <slot name="head" />
+    <Icons />
     <Analytics />
   </Fragment>
 
