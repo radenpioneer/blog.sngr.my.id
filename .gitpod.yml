@@ -1,11 +1,11 @@
-image: gitpod/workspace-bun
+image: gitpod/workspace-full
 
 tasks:
   - init: |
-      bun install
+      pnpm install
 
     command: |
-      bun run dev
+      pnpm run dev
 
 ports:
   - port: 4321
