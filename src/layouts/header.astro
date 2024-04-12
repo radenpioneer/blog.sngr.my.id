@@ -1,8 +1,8 @@
 ---
-import { getEntry } from 'astro:content'
+import { getSiteInfo } from '~/data/site'
 import { Image } from 'astro:assets'
 
-const { data: site } = await getEntry('site', 'site')
+const site = await getSiteInfo()
 ---
 
 <header class="container">

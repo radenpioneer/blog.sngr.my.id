@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = () => {
   const stylesheet = `
     <?xml version="1.0" encoding="UTF-8"?>
 	<!--
